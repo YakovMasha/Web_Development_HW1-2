@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Должности{% endblock %}
+
+{% block content %}
+<h2>Список должностей</h2>
+
+<a href="{% url 'orgapp:position-create' %}" class="btn btn-primary">Добавить должность</a>
+<hr>
+
+{% if positions %}
+    <ul>
+    {% for pos in positions %}
+        <li>
+            <strong>{{ pos.title }}</strong>
+            <a href="{% url 'orgapp:position-detail' pos.pk %}">Просмотреть</a> |
+            <a href="{% url 'orgapp:position-update' pos.pk %}">Редактировать</a> |
+            <a href="{% url 'orgapp:position-delete' pos.pk %}">Удалить</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Нет должностей.</p>
+{% endif %}
+
+{% include 'pagination.html' with page_obj=page_obj %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if object %}Редактировать должность{% else %}Добавить должность{% endif %}{% endblock %}
+
+{% block content %}
+<h2>{% if object %}Редактировать должность{% else %}Добавить должность{% endif %}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">{% if object %}Сохранить{% else %}Добавить{% endif %}</button>
+    <a href="{% url 'orgapp:position-list' %}" class="btn btn-secondary">Отмена</a>
+</form>
+{% endblock %}

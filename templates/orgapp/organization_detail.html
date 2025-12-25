@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ organization.name }}{% endblock %}
+
+{% block content %}
+<h2>{{ organization.name }}</h2>
+<p><strong>Описание:</strong> {{ organization.description }}</p>
+
+<a href="{% url 'orgapp:organization-list' %}">← Назад к списку</a> |
+<a href="{% url 'orgapp:organization-update' organization.pk %}">Редактировать</a> |
+<a href="{% url 'orgapp:organization-delete' organization.pk %}">Удалить</a>
+{% endblock %}

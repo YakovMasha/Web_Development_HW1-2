@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Организации{% endblock %}
+
+{% block content %}
+<h2>Список организаций</h2>
+
+<a href="{% url 'orgapp:organization-create' %}" class="btn btn-primary">Добавить организацию</a>
+<hr>
+
+{% if organizations %}
+    <ul>
+    {% for org in organizations %}
+        <li>
+            <strong>{{ org.name }}</strong> — {{ org.description|truncatewords:10 }}
+            <a href="{% url 'orgapp:organization-detail' org.pk %}">Просмотреть</a> |
+            <a href="{% url 'orgapp:organization-update' org.pk %}">Редактировать</a> |
+            <a href="{% url 'orgapp:organization-delete' org.pk %}">Удалить</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Нет организаций.</p>
+{% endif %}
+
+{% include 'pagination.html' with page_obj=page_obj %}
+{% endblock %}

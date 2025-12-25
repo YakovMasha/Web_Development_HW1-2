@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Членство {{ membership.user.username }}{% endblock %}
+
+{% block content %}
+<h2>Членство: {{ membership.user.username }} в {{ membership.organization.name }}</h2>
+
+<ul>
+    <li><strong>Пользователь:</strong> {{ membership.user.username }}</li>
+    <li><strong>Организация:</strong> {{ membership.organization.name }}</li>
+    <li><strong>Должность:</strong> {{ membership.position.title|default:"Сотрудник" }}</li>
+    <li><strong>Дата вступления:</strong> {{ membership.joined_at }}</li>
+</ul>
+
+<a href="{% url 'orgapp:membership-list' %}">← Назад к списку</a> |
+<a href="{% url 'orgapp:membership-update' membership.pk %}">Редактировать</a> |
+<a href="{% url 'orgapp:membership-delete' membership.pk %}">Удалить</a>
+{% endblock %}

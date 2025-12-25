@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Мое приложение{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+        }
+        nav {
+            margin-bottom: 20px;
+        }
+        nav a {
+            margin-right: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Управление организациями и должностями</h1>
+        </header>
+
+        <nav>
+            <a href="{% url 'home' %}">Главная</a>
+            <a href="{% url 'orgapp:organization-list' %}">Организации</a>
+            <a href="{% url 'orgapp:position-list' %}">Должности</a>
+            <a href="{% url 'orgapp:membership-list' %}">Членства</a>
+            <a href="{% url 'about' %}">О проекте</a>
+        </nav>
+
+        <div class="content">
+            {% block content %}
+            <!-- Содержимое страницы будет здесь -->
+            {% endblock %}
+        </div>
+
+        <footer>
+            &copy; 2025 Учебный проект по Django
+        </footer>
+    </div>
+</body>
+</html>

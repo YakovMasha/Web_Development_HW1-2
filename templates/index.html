@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+<h2>Добро пожаловать в систему управления организациями!</h2>
+<p>Здесь вы можете:</p>
+<ul>
+    <li><a href="{% url 'orgapp:organization-list' %}">Просмотреть список организаций</a></li>
+    <li><a href="{% url 'orgapp:position-list' %}">Просмотреть список должностей</a></li>
+    <li><a href="{% url 'orgapp:membership-list' %}">Просмотреть членства пользователей</a></li>
+</ul>
+<p>Используйте меню навигации сверху для перехода между разделами.</p>
+{% endblock %}
